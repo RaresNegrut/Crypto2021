@@ -10,9 +10,7 @@ namespace Tema1
 
         public string PlainText { get; }
         public string CipherText { get; }
-
         public string PermutatedLowerAlphabet { get { return _permutatedLowerAlphabet; } }
-
         public int Index { get { return 0; } }
 
         //constructor folosit pentru cand se doreste decriptarea unui mesaj citit de la tastatura, fara a se sti permutarea alfabetului
