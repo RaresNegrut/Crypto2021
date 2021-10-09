@@ -32,10 +32,6 @@ namespace Tema1
             return base.Decrypt(cipherText);
         }
 
-        public override string Encrypt(string inputText)
-        {
-            return base.Encrypt(inputText);
-        }
         public override string Analyze(string inputText)
         {
             int index = 1;
@@ -56,10 +52,7 @@ namespace Tema1
                     .Where(
                     resultedWord => words.Any(word => string.Compare(word, resultedWord) == 0)).Count();
 
-                if (matchingWords == resultedWords.Length)
-                {
-                    keyFound = true;
-                }
+                keyFound = (matchingWords == resultedWords.Length ? true : false);
 
                 index++;
             }

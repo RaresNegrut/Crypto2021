@@ -43,14 +43,7 @@ namespace Tema1
             string result = "";
             foreach (char character in inputText)
             {
-                if (char.IsLetter(character))
-                {
-                    result += alphabetToUse[alphabetUsed.IndexOf(character)];
-                }
-                else
-                {
-                    result += character;
-                }
+                result += (char.IsLetter(character) ? alphabetToUse[alphabetUsed.IndexOf(character)] : character);
             }
             return result;
         }
