@@ -7,12 +7,10 @@ using System.Text.RegularExpressions;
 
 namespace Tema1
 {
-    public class CircularPermutaionCipher : MonoalphabeticCipher
+    public class CircularPermutaionCipher : MonoalphabeticCipher, ICircularCipher
     {
         protected int _index;
-
-        public int Index { get => _index; }
-        public string PermutatedLowerAlphabet { get => _permutatedLowerAlphabet; }
+        public new int Index { get { return _index; } }
 
         //constructor ce imi ia mesajul criptat doar, folosit in cazul in care se doreste decriptarea unui mesaj
         public CircularPermutaionCipher(string cipherText) : base(cipherText) { }
@@ -33,6 +31,12 @@ namespace Tema1
         {
             _permutatedLowerAlphabet = _lowerAlphabet.ShiftAlphabetByGivenIndex(index);
             return base.Decrypt(cipherText);
+        }
+
+        public string Encrypt(string cipherText, int index)
+        {
+            _permutatedLowerAlphabet = _lowerAlphabet.ShiftAlphabetByGivenIndex(index);
+            return base.Encrypt(cipherText);
         }
 
         public override string Analyze(string inputText)

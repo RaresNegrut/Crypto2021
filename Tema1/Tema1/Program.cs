@@ -6,10 +6,10 @@ namespace Tema1
     {
         static void Main(string[] args)
         {
-            CircularPermutaionCipher cipher = new CircularPermutaionCipher("hello there", 5);
-            string messageEncryptedCircularly = cipher.Encrypt(cipher.PlainText);
+            ICircularCipher cipher = new CircularPermutaionCipher("hello there", 5);
+            string messageEncryptedCircularly = cipher.Encrypt(cipher.PlainText,5);
             Console.WriteLine(messageEncryptedCircularly);
-            Console.WriteLine($"{cipher.Decrypt("mjqqt, ymjwj")} {cipher.PermutatedLowerAlphabet} {cipher.Index}");
+            Console.WriteLine($"{cipher.Analyze("mjqqt, ymjwj")} {cipher.PermutatedLowerAlphabet} {cipher.Index}");
             Console.WriteLine(cipher.Decrypt("mjqqt", 5));
         }
     }

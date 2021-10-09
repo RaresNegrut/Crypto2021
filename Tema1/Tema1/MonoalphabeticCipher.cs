@@ -3,13 +3,17 @@ using System.Text;
 
 namespace Tema1
 {
-    public class MonoalphabeticCipher : ICipher
+    public class MonoalphabeticCipher : INonCircularCipher
     {
         protected const string _lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
         protected string _permutatedLowerAlphabet;
 
         public string PlainText { get; }
         public string CipherText { get; }
+
+        public string PermutatedLowerAlphabet { get { return _permutatedLowerAlphabet; } }
+
+        public int Index { get { return 0; } }
 
         //constructor folosit pentru cand se doreste decriptarea unui mesaj citit de la tastatura, fara a se sti permutarea alfabetului
         public MonoalphabeticCipher(string cipherText = "")
@@ -30,7 +34,7 @@ namespace Tema1
 
         public virtual string Decrypt(string inputText)
         {
-            return ActualEncryption(inputText,_lowerAlphabet, _permutatedLowerAlphabet);
+            return ActualEncryption(inputText, _lowerAlphabet, _permutatedLowerAlphabet);
         }
 
         public virtual string Encrypt(string inputText)
