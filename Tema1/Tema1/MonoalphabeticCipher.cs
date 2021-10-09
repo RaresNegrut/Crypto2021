@@ -6,8 +6,6 @@ namespace Tema1
     public class MonoalphabeticCipher : ICipher
     {
         protected const string _lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
-        //protected const string _upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        //protected const string _alphabet = _upperAlphabet + _lowerAlphabet;
         protected string _permutatedLowerAlphabet;
 
         public string PlainText { get; }
@@ -32,29 +30,22 @@ namespace Tema1
 
         public virtual string Decrypt(string inputText)
         {
-            string result = "";
-            foreach (char character in inputText)
-            {
-                if (char.IsLetter(character))
-                {
-                    result += _lowerAlphabet[_permutatedLowerAlphabet.IndexOf(character)];
-                }
-                else
-                {
-                    result += character;
-                }
-            }
-            return result;
+            return ActualEncryption(inputText,_lowerAlphabet, _permutatedLowerAlphabet);
         }
 
         public virtual string Encrypt(string inputText)
+        {
+            return ActualEncryption(inputText, _permutatedLowerAlphabet, _lowerAlphabet);
+        }
+
+        private string ActualEncryption(string inputText, string alphabetToUse, string alphabetUsed)
         {
             string result = "";
             foreach (char character in inputText)
             {
                 if (char.IsLetter(character))
                 {
-                    result += _permutatedLowerAlphabet[_lowerAlphabet.IndexOf(character)];
+                    result += alphabetToUse[alphabetUsed.IndexOf(character)];
                 }
                 else
                 {

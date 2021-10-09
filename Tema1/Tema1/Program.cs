@@ -7,8 +7,10 @@ namespace Tema1
         static void Main(string[] args)
         {
             CircularPermutaionCipher cipher = new CircularPermutaionCipher("hello there", 5);
-            Console.WriteLine(cipher.Encrypt(cipher.PlainText));
-            Console.WriteLine(cipher.Decrypt("mjqqt ymjwj"));
+            string messageEncryptedCircularly = cipher.Encrypt(cipher.PlainText);
+            Console.WriteLine(messageEncryptedCircularly);
+            Console.WriteLine(cipher.Decrypt("mjqqt, ymjwj"));
+            Console.WriteLine(cipher.Decrypt("mjqqt", 5));
         }
     }
 }
