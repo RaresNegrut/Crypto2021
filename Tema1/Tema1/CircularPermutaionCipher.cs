@@ -9,7 +9,10 @@ namespace Tema1
 {
     public class CircularPermutaionCipher : MonoalphabeticCipher
     {
-        public int Index { get; set; }
+        protected int _index;
+
+        public int Index { get => _index; }
+        public string PermutatedLowerAlphabet { get => _permutatedLowerAlphabet; }
 
         //constructor ce imi ia mesajul criptat doar, folosit in cazul in care se doreste decriptarea unui mesaj
         public CircularPermutaionCipher(string cipherText) : base(cipherText) { }
@@ -17,7 +20,7 @@ namespace Tema1
         //constructor ce ia plaintextul si indexul si imi cripteaza mesajul
         public CircularPermutaionCipher(string plainText, int index) : base(plainText, permutatedLowerAlphabet: "")
         {
-            Index = index;
+            _index = index;
             _permutatedLowerAlphabet = _lowerAlphabet.ShiftAlphabetByGivenIndex(index);
         }
 
@@ -44,8 +47,8 @@ namespace Tema1
             {
                 _permutatedLowerAlphabet = _lowerAlphabet.ShiftAlphabetByGivenIndex(index);
                 result = Encrypt(inputText);
-                
-                
+
+
                 string[] resultedWords = myRegex.Split(result);
 
                 int matchingWords = resultedWords
@@ -56,8 +59,14 @@ namespace Tema1
 
                 index++;
             }
-
+            PrepareAnalysisResult(index);
             return result;
+        }
+
+        private void PrepareAnalysisResult(int index)
+        {
+            _index = 26 - index + 1;
+            _permutatedLowerAlphabet = _lowerAlphabet.ShiftAlphabetByGivenIndex(_index);
         }
     }
 }

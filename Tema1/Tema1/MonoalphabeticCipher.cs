@@ -45,6 +45,7 @@ namespace Tema1
             {
                 result += (char.IsLetter(character) ? alphabetToUse[alphabetUsed.IndexOf(character)] : character);
             }
+            _permutatedLowerAlphabet = _lowerAlphabet;
             return result;
         }
     }
