@@ -6,7 +6,9 @@ namespace Tema1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            CircularPermutaionCipher cipher = new CircularPermutaionCipher("hello there", 5);
+            Console.WriteLine(cipher.Encrypt(cipher.PlainText));
+            Console.WriteLine(cipher.Decrypt("mjqqt ymjwj"));
         }
     }
 }
